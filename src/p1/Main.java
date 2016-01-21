@@ -5,7 +5,7 @@ package p1;
  * CSC 164
  * Eric Mailman
  * 21Jan16
- * Version 0.1
+ * Version 1.0
  */
 
 import java.util.Scanner;
@@ -17,6 +17,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         char option;
+        double price;
+        String sandwich = "";
 
         System.out.println("Welcome to Jimmy Johns");
 
@@ -28,14 +30,48 @@ public class Main {
             System.out.println("(D)one");
             System.out.print("Enter your choice: ");
 
-            // Get user input and convert to upper case
-            String choice = input.next();
-            choice = choice.toUpperCase();
+            // Get user input, convert to upper case and get first character
+            option = input.next().toUpperCase().charAt(0);
 
-            // Get the first character of the user input
-            option = choice.charAt(0);
+            switch (option) {
+                // Ham
+                case 'H':
+                    price = 5.50;
+                    sandwich = "Ham";
+                    break;
 
-            System.out.println("choice = " + choice + " ; option = " + option);
+                // Roast beef
+                case 'R':
+                    price = 6.00;
+                    sandwich = "Roast beef";
+                    break;
+
+                // Salami
+                case 'S':
+                    price = 5.25;
+                    sandwich = "Salami";
+                    break;
+
+                // Tuna
+                case 'T':
+                    price = 5.00;
+                    sandwich = "Tuna";
+                    break;
+
+                // Done ordering
+                case 'D':
+                    price = 0;
+                    break;
+
+                default:
+                    price = 0;
+                    System.out.println("option " + option + " not available");
+            }
+
+            // Give the user the order information if valid order
+            if (price != 0)
+                System.out.printf("%s Sandwich Cost $%.2f\n", sandwich, price);
+
         } while (option != 'D');
 
         System.out.println("Thank you for ordering at Jimmy Johns");
