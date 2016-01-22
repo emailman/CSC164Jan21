@@ -31,7 +31,8 @@ public class Main {
             System.out.print("Enter your choice: ");
 
             // Get user input, convert to upper case and get first character
-            option = input.next().toUpperCase().charAt(0);
+            String choice = input.next();
+            option = choice.toUpperCase().charAt(0);
 
             switch (option) {
                 // Ham
@@ -65,7 +66,7 @@ public class Main {
 
                 default:
                     price = 0;
-                    System.out.println("option " + option + " not available");
+                    System.out.printf("Your choice, %s, is not available\nMake another choice:\n", choice);
             }
 
             // Give the user the order information if valid order
